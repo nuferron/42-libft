@@ -36,7 +36,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (str);
 }
 
-int	main(int argc, char **argv)
+/*int	main(int argc, char **argv)
 {
 	char	*str;
 
@@ -48,4 +48,4 @@ int	main(int argc, char **argv)
 	printf("|%s|\n", str);
 	free(str);
 	return (0);
-}
+}*/
