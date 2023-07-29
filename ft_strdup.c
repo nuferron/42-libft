@@ -26,7 +26,7 @@ char	*ft_strdup(const char *s1)
 	return (ptr);
 }
 
-int	main(int argc, char **argv)
+/*int	main(int argc, char **argv)
 {
 	char	*result;
 
@@ -43,4 +43,4 @@ int	main(int argc, char **argv)
 	printf("Real: %s\n", result);
 	free(result);
 	return (0);
-}
+}*/
