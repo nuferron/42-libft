@@ -28,7 +28,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char	str[] = "Art feeds the soul, so does pizza";
 	char	ft_str[] = "Art feeds the soul, so does pizza";
@@ -37,4 +37,4 @@ int	main(void)
 	memset(str, 'm', 27);
 	printf("Mine: %s\n", ft_str);
 	printf("Real: %s\n", str);
-}
+}*/
