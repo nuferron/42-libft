@@ -35,14 +35,16 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	return (dst);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char	src[] = "It's-a me, Mario!";
 	char	dst[] = "My name is Marcus Decimus Meridius";
 	char	ft_dst[] = "My name is Marcus Decimus Meridius";
 
-	ft_memmove(ft_dst, src, 10);
-	memmove(dst, src, 10);
-	printf("%s\nMine: %s\nReal: %s\n", src, ft_dst, dst);
+	//ft_memmove(ft_dst, src, 10);
+	ft_memmove(ft_dst + 10, ft_dst, 7);
+	//memmove(dst, src, 10);
+	memmove(dst + 10, dst, 7);
+	printf("Mine: %s\nReal: %s\n", ft_dst, dst);
 	return (0);
-}
+}*/
