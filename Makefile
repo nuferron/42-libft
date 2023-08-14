@@ -6,7 +6,7 @@
 #    By: nuferron <nuferron@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 18:05:14 by nuferron          #+#    #+#              #
-#    Updated: 2023/03/02 01:52:15 by nuferron         ###   ########.fr        #
+#    Updated: 2023/08/14 20:16:18 by nuferron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,4 +58,5 @@ fclean: 	clean
 
 re:		fclean all
 
+.SILENT: norm
 .PHONY: all clean fclean re norm leaks
