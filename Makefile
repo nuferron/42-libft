@@ -6,9 +6,18 @@
 #    By: nuferron <nuferron@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 18:05:14 by nuferron          #+#    #+#              #
-#    Updated: 2023/08/14 20:16:18 by nuferron         ###   ########.fr        #
+#    Updated: 2023/09/13 20:22:46 by nuferron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+RED = \033[1;31m
+GREEN = \033[1;32m
+YELLOW = \033[1;33m
+BLUE = \033[1;34m
+PURPLE = \033[1;35m
+CYAN = \033[1;36m
+WHITE = \033[1;37m
+RESET = \033[0m
 
 SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
        ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
@@ -16,47 +25,48 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	   ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c \
 	   ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c \
 	   ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
-	   ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
+	   ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
-SRCSBONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
-			ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
-			ft_lstclear.c ft_lstiter.c ft_lstmap.c \
+SRCSBONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
+			ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
+			ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
-OBJS = ${SRCS:.c=.o}
+OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
+OBJSBONUS = $(addprefix $(OBJDIR),$(SRCSBONUS:.c=.o))
 
+OBJDIR = obj/
+SRCDIR = src/
 HEADER = libft.h
 NAME = libft.a
-CC = cc
-RM = rm -f
+RM = rm -rf
 CFLAGS = -Wall -Wextra -Werror
-OBJSBONUS = ${SRCSBONUS:.c=.o}
-
-%.o: %.c $(HEADER)
-	${CC} ${CFLAGS} -I libft.h -c $< -o ${<:.c=.o}
 
 all: 		${NAME}
 
-${NAME}:	${OBJS} 
+${NAME}:	${OBJS}
 		ar rcs ${NAME} ${OBJS}
+		printf "${GREEN}Library compiled!${RESET}"
 
-norm:
-	norminette ${SRCS} ${SRCSBONUS}
+bonus:		${OBJS} ${OBJSBONUS}
+		ar rcs ${NAME} ${OBJS} ${OBJSBONUS}
+		printf "${GREEN}Bonus compiled!${RESET}"
 
-leaks:
-	leaks -atExit -- ./a.out ${ARGS}
+$(OBJDIR)%.o:	${SRCDIR}%.c $(HEADER) | ${OBJDIR}
+		@printf "${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
+		@cc $(CFLAGS) -I $(HEADER) -c $< -o $@
 
-bonus:		${OBJS} ${OBJSBONUS} $(HEADER)
-			ar rcs ${NAME} ${OBJS} ${OBJSBONUS}
-			@touch $@
+${OBJDIR}:
+		mkdir -p $(dir $@)
+
 clean: 		
-		${RM} ${OBJS} ${OBJSBONUS} 
+		${RM} ${OBJDIR}
+		printf "${WHITE}LIBFT: ${RED}Objects have been deleted${RESET}\n"
 
 fclean: 	clean
 		${RM} ${NAME}
-		${RM} bonus
-		${RM} a.out
+		printf "${WHITE}LIBFT: ${RED}Static library has been deleted${RESET}\n"
 
 re:		fclean all
 
-.SILENT: norm
-.PHONY: all clean fclean re norm leaks
+.SILENT: fclean clean ${NAME} bonus ${OBJDIR}
+.PHONY: all clean fclean re bonus
