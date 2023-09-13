@@ -45,14 +45,14 @@ all: 		${NAME}
 
 ${NAME}:	${OBJS}
 		ar rcs ${NAME} ${OBJS}
-		printf "${GREEN}Library compiled!${RESET}"
+		printf "${WHITE}LIBFT: ${GREEN}Library compiled!${RESET}"
 
 bonus:		${OBJS} ${OBJSBONUS}
 		ar rcs ${NAME} ${OBJS} ${OBJSBONUS}
-		printf "${GREEN}Bonus compiled!${RESET}"
+		printf "${WHITE}LIBFT: ${GREEN}Bonus compiled!${RESET}"
 
 $(OBJDIR)%.o:	${SRCDIR}%.c $(HEADER) | ${OBJDIR}
-		@printf "${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
+		@printf "${WHITE}LIBFT:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
 		@cc $(CFLAGS) -I $(HEADER) -c $< -o $@
 
 ${OBJDIR}:
