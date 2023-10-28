@@ -6,7 +6,7 @@
 /*   By: nuferron <nuferron@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:39:28 by nuferron          #+#    #+#             */
-/*   Updated: 2023/10/28 22:11:09 by nuferron         ###   ########.fr       */
+/*   Updated: 2023/10/28 22:57:55 by nuferron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 #define RED		"\033[1;31m"
 #define GREEN	"\033[1;32m"
