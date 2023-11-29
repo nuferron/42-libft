@@ -6,7 +6,7 @@
 #    By: nuferron <nuferron@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 18:05:14 by nuferron          #+#    #+#              #
-#    Updated: 2023/10/28 21:20:19 by nuferron         ###   ########.fr        #
+#    Updated: 2023/11/29 16:03:18 by nuferron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,58 +32,73 @@ SRCS_BNS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 			ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
-OBJS_BNS = $(addprefix $(OBJDIR_BNS),$(SRCS_BNS:.c=.o))
-
+OBJS_BNS = $(addprefix $(OBJDIR),$(SRCS_BNS:.c=.o))
 OBJDIR = obj/
-OBJDIR_BNS = obj_bonus/
 SRCDIR = src/
-SRCDIR_BNS = src_bonus/
 HEADER = libft.h
 NAME = libft.a
-RM = rm -rf
 CFLAGS = -Wall -Wextra -Werror
 COLUMNS = $(shell tput cols)
 
 all: 		${NAME}
 
-${NAME}:	${OBJS}
+${NAME}:	${OBJS} make_printf
 		ar rcs ${NAME} ${OBJS}
-		printf "${WHITE}LIBFT: ${GREEN}Library compiled!\n${RESET}"
+		make -s -C ft_dprintf bonus
+		cp ft_dprintf/libftprintf.a ${NAME}
+		make -s -C ft_printf bonus
+		cp ft_printf/libftprintf.a ${NAME}
+		printf "${WHITE}LIBFT: ${GREEN}Library compiled!${RESET}\n"
 
-bonus:		${OBJS} ${OBJS_BNS}
+bonus:	do_bonus
+
+make_printf: 
+		if [ -e ${NAME} ]; then \
+			make -s -C ft_dprintf bonus ; \
+			cp ft_dprintf/libftprintf.a ${NAME} ; \
+			make -s -C ft_printf bonus ; \
+			cp ft_printf/libftprintf.a ${NAME} ; \
+		fi
+
+do_bonus:	${OBJS} ${OBJS_BNS}
 		ar rcs ${NAME} ${OBJS} ${OBJS_BNS}
-		printf "${WHITE}LIBFT: ${GREEN}Bonus compiled!\n${RESET}"
+		printf "${WHITE}LIBFT: ${GREEN}Bonus compiled!${RESET}\n"
+		touch do_bonus
+
+norm:
+	make -C ft_dprintf norm --no-print-directory
+	make -C ft_printf norm --no-print-directory
+	printf "${WHITE}LIBFT${RESET}\n"
+	norminette $(addprefix ${SRCDIR},$(SRCS)) $(addprefix ${SRCDIR},$(SRCS_BNS)) ${HEADER} | grep -v "OK" \
+	| awk '{if($$2 == "Error!") print "${RED}"$$1" "$$2; \
+	else print "${RESET}"$$0}'
 
 $(OBJDIR)%.o:	${SRCDIR}%.c $(HEADER) | ${OBJDIR}
 		@printf "${WHITE}LIBFT:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
 		@cc $(CFLAGS) -I $(HEADER) -c $< -o $@
-		@printf "\r%-${COLUMNS}s\r"
-
-$(OBJDIR_BNS)%.o:	${SRCDIR_BNS}%.c $(HEADER) | ${OBJDIR_BNS}
-		@printf "${WHITE}LIBFT:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
-		@cc $(CFLAGS) -I $(HEADER) -c $< -o $@
-		@printf "\r%-${COLUMNS}s\r"
+		@printf "\r%-${COLUMNS}s\r" ""
 
 ${OBJDIR}:
 		mkdir -p $(dir $@)
 
-${OBJDIR_BNS}:
-		mkdir -p $(dir $@)
-
-clean: 		
-	if [ -d ${OBJDIR} ] ; then \
-		rm -rf ${OBJDIR} ; \
-		printf "${WHITE}LIBFT: ${RED}Objects have been deleted${RESET}\n"; \
-	fi
+clean:
+		make -C ft_dprintf clean --no-print-directory
+		make -C ft_printf clean --no-print-directory
+		if [ -d ${OBJDIR} ] ; then \
+			rm -rf ${OBJDIR} ; \
+			printf "${WHITE}LIBFT: ${RED}Objects have been deleted${RESET}\n" ; \
+		fi
 
 fclean: 	clean
-	if [ -e ${NAME} ] ; then \
-		rm -f ${NAME} ; \
-		printf "${WHITE}LIBFT: ${RED}All existing binaries have been deleted${RESET}\n" ; \
-	else printf "${WHITE}LIBFT: ${PURPLE}Already cleaned${RESET}\n" ; \
-	fi
+		make -C ft_dprintf fclean --no-print-directory
+		make -C ft_printf fclean --no-print-directory
+		if [ -e ${NAME} ] || [ -e do_bonus ] ; then \
+			rm -rf ${NAME} do_bonus ; \
+			printf "${WHITE}LIBFT: ${RED}Static library has been deleted${RESET}\n" ; \
+		else printf "${WHITE}LIBFT: ${PURPLE}Already cleaned${RESET}\n" ; \
+		fi
 
 re:		fclean all
 
-.SILENT: fclean clean ${NAME} bonus ${OBJDIR} ${OBJDIR_BNS}
-.PHONY: all clean fclean re bonus
+.SILENT: fclean clean ${NAME} do_bonus ${OBJDIR} norm make_printf
+.PHONY: all clean fclean re bonus make_printf
