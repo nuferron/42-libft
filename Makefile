@@ -6,7 +6,7 @@
 #    By: nuferron <nuferron@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 18:05:14 by nuferron          #+#    #+#              #
-#    Updated: 2023/11/29 16:03:18 by nuferron         ###   ########.fr        #
+#    Updated: 2024/01/09 21:32:58 by nuferron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRCS_BNS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 			ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
-OBJS_BNS = $(addprefix $(OBJDIR),$(SRCS_BNS:.c=.o))
+OBJS_BNS = $(addprefix $(OBJDIR), $(addprefix bonus, $(SRCS_BNS:.c=.o)))
 OBJDIR = obj/
 SRCDIR = src/
 HEADER = libft.h
@@ -52,7 +52,7 @@ ${NAME}:	${OBJS} make_printf
 
 bonus:	do_bonus
 
-make_printf: 
+make_printf:
 		if [ -e ${NAME} ]; then \
 			make -s -C ft_dprintf bonus ; \
 			cp ft_dprintf/libftprintf.a ${NAME} ; \
@@ -66,11 +66,11 @@ do_bonus:	${OBJS} ${OBJS_BNS}
 		touch do_bonus
 
 norm:
-	make -C ft_dprintf norm --no-print-directory
 	make -C ft_printf norm --no-print-directory
-	printf "${WHITE}LIBFT${RESET}\n"
-	norminette $(addprefix ${SRCDIR},$(SRCS)) $(addprefix ${SRCDIR},$(SRCS_BNS)) ${HEADER} | grep -v "OK" \
-	| awk '{if($$2 == "Error!") print "${RED}"$$1" "$$2; \
+	make -C ft_dprintf norm --no-print-directory
+	printf "${WHITE}LIBFT${RESET}"
+	(norminette ${SRCDIR} && echo " ${GREEN}Everything is correct")  | grep -v "OK" \
+	| awk '{if($$2 == "Error!") print "\n${RED}"$$1" "$$2; \
 	else print "${RESET}"$$0}'
 
 $(OBJDIR)%.o:	${SRCDIR}%.c $(HEADER) | ${OBJDIR}
