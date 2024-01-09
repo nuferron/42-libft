@@ -58,7 +58,6 @@ do_bonus:	${OBJS_BNS}
 		touch do_bonus
 
 norm:
-	#make -C inc/libft norm --no-print-directory
 	printf "${WHITE}FT_PRINTF${RESET}"
 	(norminette ${SRCDIR} && echo " ${GREEN}Everything is correct")  | grep -v "OK" \
 	| awk '{if($$2 == "Error!") print "\n${RED}"$$1" "$$2; \
