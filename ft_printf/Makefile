@@ -6,7 +6,7 @@
 #    By: nuferron <nuferron@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 00:01:43 by nuferron          #+#    #+#              #
-#    Updated: 2023/11/29 16:04:01 by nuferron         ###   ########.fr        #
+#    Updated: 2024/01/09 21:19:43 by nuferron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,9 +58,10 @@ do_bonus:	${OBJS_BNS}
 		touch do_bonus
 
 norm:
-	printf "${WHITE}FT_PRINTF${RESET}\n"
-	norminette $(addprefix ${SRCDIR},$(SRCS)) $(addprefix ${SRCDIR_BNS},$(SRCS_BNS)) ${HEADER} | grep -v "OK" \
-	| awk '{if($$2 == "Error!") print "${RED}"$$1" "$$2; \
+	#make -C inc/libft norm --no-print-directory
+	printf "${WHITE}FT_PRINTF${RESET}"
+	(norminette ${SRCDIR} && echo " ${GREEN}Everything is correct")  | grep -v "OK" \
+	| awk '{if($$2 == "Error!") print "\n${RED}"$$1" "$$2; \
 	else print "${RESET}"$$0}'
 
 ${OBJDIR}%.o:	${SRCDIR}%.c ${HEADER} | ${OBJDIR}
