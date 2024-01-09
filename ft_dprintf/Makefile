@@ -6,7 +6,7 @@
 #    By: nuferron <nuferron@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 00:01:43 by nuferron          #+#    #+#              #
-#    Updated: 2023/11/29 15:56:54 by nuferron         ###   ########.fr        #
+#    Updated: 2024/01/09 21:19:43 by nuferron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ all:		${NAME}
 
 ${NAME}:	${OBJS}
 		ar rcs ${NAME} ${OBJS}
-		printf "${WHITE}FT_DPRINTF: ${GREEN}Library compiled!${RESET}\n"
+		printf "${WHITE}FT_PRINTF: ${GREEN}Library compiled!${RESET}\n"
 
 bonus:		do_bonus
 
@@ -54,17 +54,17 @@ do_bonus:	${OBJS_BNS}
 		rm -rf obj/ ${NAME}
 		cp ../libft.a ${NAME}
 		ar rcs ${NAME} ${OBJS_BNS}
-		printf "${WHITE}FT_DPRINTF: ${GREEN}Bonus compiled!${RESET}\n"
+		printf "${WHITE}FT_PRINTF: ${GREEN}Bonus compiled!${RESET}\n"
 		touch do_bonus
 
 norm:
-	printf "${WHITE}FT_DPRINTF${RESET}\n"
-	norminette $(addprefix ${SRCDIR},$(SRCS)) $(addprefix ${SRCDIR_BNS},$(SRCS_BNS)) ${HEADER} | grep -v "OK" \
-	| awk '{if($$2 == "Error!") print "${RED}"$$1" "$$2; \
+	printf "${WHITE}FT_DPRINTF${RESET}"
+	(norminette ${SRCDIR} && echo " ${GREEN}Everything is correct")  | grep -v "OK" \
+	| awk '{if($$2 == "Error!") print "\n${RED}"$$1" "$$2; \
 	else print "${RESET}"$$0}'
 
 ${OBJDIR}%.o:	${SRCDIR}%.c ${HEADER} | ${OBJDIR}
-		@printf "${WHITE}FT_DPRINTF:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
+		@printf "${WHITE}FT_PRINTF:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
 		@cc $(CFLAGS) -I $(HEADER) -c $< -o $@
 		@printf "\r%-${COLUMNS}s\r" ""
 
@@ -72,7 +72,7 @@ ${OBJDIR}:
 		mkdir -p $(dir $@)
 
 ${OBJDIR_BNS}%.o:	${SRCDIR_BNS}%.c ${HEADER} | ${OBJDIR_BNS}
-		@printf "${WHITE}FT_DPRINTF:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
+		@printf "${WHITE}FT_PRINTF:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
 		@cc $(CFLAGS) -I $(HEADER) -c $< -o $@
 		@printf "\r%-${COLUMNS}s\r" ""
 
@@ -82,14 +82,14 @@ ${OBJDIR_BNS}:
 clean:
 	if [ -d ${OBJDIR} ] || [ -d ${OBJDIR_BNS} ]; then \
 		rm -rf ${OBJDIR} ${OBJDIR_BNS} ; \
-		printf "${WHITE}FT_DPRINTF: ${RED}Objects have been deleted${RESET}\n" ; \
+		printf "${WHITE}FT_PRINTF: ${RED}Objects have been deleted${RESET}\n" ; \
 	fi
 
 fclean: 	clean
 		if [ -e ${NAME} ] || [ -e do_bonus ] ; then \
 			rm -rf ${NAME} do_bonus ; \
-			printf "${WHITE}FT_DPRINTF: ${RED}Static library has been deleted${RESET}\n" ; \
-		else printf "${WHITE}FT_DPRINTF: ${PURPLE}Already cleaned${RESET}\n" ; \
+			printf "${WHITE}FT_PRINTF: ${RED}Static library has been deleted${RESET}\n" ; \
+		else printf "${WHITE}FT_PRINTF: ${PURPLE}Already cleaned${RESET}\n" ; \
 		fi
 
 re:	fclean all
