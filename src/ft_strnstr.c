@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 static int	find_needle(const char *hay, size_t i, const char *nd, size_t len)
 {
@@ -35,11 +35,9 @@ static int	find_needle(const char *hay, size_t i, const char *nd, size_t len)
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
-	size_t	j;
 	size_t	hay_len;
 
 	i = 0;
-	j = 0;
 	hay_len = ft_strlen(haystack);
 	if (needle[0] == '\0')
 		return ((char *) haystack);
