@@ -32,7 +32,7 @@ SRCS_BNS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 			ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
-OBJS_BNS = $(addprefix $(OBJDIR), $(addprefix bonus, $(SRCS_BNS:.c=.o)))
+OBJS_BNS = $(addprefix $(OBJDIR), $(addprefix bonus/, $(SRCS_BNS:.c=.o)))
 OBJDIR = obj/
 SRCDIR = src/
 HEADER = libft.h
@@ -75,11 +75,12 @@ norm:
 
 $(OBJDIR)%.o:	${SRCDIR}%.c $(HEADER) | ${OBJDIR}
 		@printf "${WHITE}LIBFT:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
-		@cc $(CFLAGS) -I $(HEADER) -c $< -o $@
+		@cc $(CFLAGS) -I . -c $< -o $@
 		@printf "\r%-${COLUMNS}s\r" ""
 
 ${OBJDIR}:
 		mkdir -p $(dir $@)
+		mkdir -p ${OBJDIR}/bonus
 
 clean:
 		make -C ft_dprintf clean --no-print-directory
