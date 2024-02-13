@@ -40,10 +40,8 @@ static char	*getting_pointer(unsigned long long num, t_flags *flags)
 {
 	char	*str_precision;
 	int		i;
-	int		j;
 	int		prec_len;
 
-	j = 0;
 	flags->hex = 'x';
 	i = pointer_len(num);
 	prec_len = precision_len('d', i, flags);

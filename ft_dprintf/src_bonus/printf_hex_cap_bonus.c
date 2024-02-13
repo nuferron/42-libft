@@ -40,10 +40,8 @@ char	*getting_hex_cap(unsigned int num, t_flags *flags)
 {
 	char	*str_precision;
 	int		i;
-	int		j;
 	int		prec_len;
 
-	j = 0;
 	if (flags->hex == '#')
 		flags->hex = 'X';
 	i = hex_len(num);

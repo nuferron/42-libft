@@ -65,7 +65,7 @@ norm:
 
 ${OBJDIR}%.o:	${SRCDIR}%.c ${HEADER} | ${OBJDIR}
 		@printf "${WHITE}FT_PRINTF:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
-		@cc $(CFLAGS) -I $(HEADER) -c $< -o $@
+		@cc $(CFLAGS) -c $< -o $@
 		@printf "\r%-${COLUMNS}s\r" ""
 
 ${OBJDIR}:
@@ -73,7 +73,7 @@ ${OBJDIR}:
 
 ${OBJDIR_BNS}%.o:	${SRCDIR_BNS}%.c ${HEADER} | ${OBJDIR_BNS}
 		@printf "${WHITE}FT_PRINTF:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
-		@cc $(CFLAGS) -I $(HEADER) -c $< -o $@
+		@cc $(CFLAGS) -c $< -o $@
 		@printf "\r%-${COLUMNS}s\r" ""
 
 ${OBJDIR_BNS}:
