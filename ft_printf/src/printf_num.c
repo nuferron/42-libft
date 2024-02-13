@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "ft_printf.h"
 
 static int	print_num_digits(int num)
 {

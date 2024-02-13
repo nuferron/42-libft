@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "ft_dprintf.h"
 
 static int	format_distributor(int fd, char c, va_list args)
 {
@@ -33,7 +33,7 @@ static int	format_distributor(int fd, char c, va_list args)
 	return (0);
 }
 
-int	ft_printf(int fd, char const *format, ...)
+int	ft_dprintf(int fd, char const *format, ...)
 {
 	va_list	arg_ptr;
 	int		i;

@@ -37,8 +37,9 @@ OBJDIR = obj/
 OBJDIR_BNS = obj_bonus/
 SRCDIR = src/
 SRCDIR_BNS = src_bonus/
-NAME = libftprintf.a
-HEADER = libftprintf.h
+NAME = libft_printf.a
+LIBFT = ../libft.a
+HEADER = ft_printf.h
 CFLAGS = -Wall -Wextra -Werror
 COLUMNS = $(shell tput cols)
 
@@ -48,13 +49,17 @@ ${NAME}:	${OBJS}
 		ar rcs ${NAME} ${OBJS}
 		printf "${WHITE}FT_PRINTF: ${GREEN}Library compiled!${RESET}\n"
 
-bonus:		do_bonus
+bonus:	
+		if [ -e ${LIBFT} ] ; then \
+			${MAKE} do_bonus ; \
+		else \
+			echo "${RED}Error: Libft must be compiled before ft_printf${RESET}" ; \
+		fi
 
 do_bonus:	${OBJS_BNS}
 		rm -rf obj/ ${NAME}
-		cp ../libft.a ${NAME}
 		ar rcs ${NAME} ${OBJS_BNS}
-		printf "${WHITE}FT_PRINTF: ${GREEN}Bonus compiled!${RESET}\n"
+		echo "${WHITE}FT_PRINTF: ${GREEN}Bonus compiled!${RESET}"
 		touch do_bonus
 
 norm:
@@ -65,7 +70,7 @@ norm:
 
 ${OBJDIR}%.o:	${SRCDIR}%.c ${HEADER} | ${OBJDIR}
 		@printf "${WHITE}FT_PRINTF:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
-		@cc $(CFLAGS) -c $< -o $@
+		@cc $(CFLAGS) -I . -c $< -o $@
 		@printf "\r%-${COLUMNS}s\r" ""
 
 ${OBJDIR}:
@@ -73,8 +78,9 @@ ${OBJDIR}:
 
 ${OBJDIR_BNS}%.o:	${SRCDIR_BNS}%.c ${HEADER} | ${OBJDIR_BNS}
 		@printf "${WHITE}FT_PRINTF:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
-		@cc $(CFLAGS) -c $< -o $@
+		@cc $(CFLAGS) -I . ${LIBFT} -c $< -o $@
 		@printf "\r%-${COLUMNS}s\r" ""
+		
 
 ${OBJDIR_BNS}:
 		mkdir -p $(dir $@)
@@ -96,5 +102,5 @@ re:	fclean all
 
 re_bonus: fclean bonus
 
-.SILENT: ${NAME} ${OBJDIR} clean fclean ${OBJDIR_BNS} do_bonus make_libs norm
+.SILENT: ${NAME} ${OBJDIR} clean fclean ${OBJDIR_BNS} do_bonus make_libs norm bonus
 .PHONY: all clean fclean re re_bonus bonus

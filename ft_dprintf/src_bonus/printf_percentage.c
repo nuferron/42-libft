@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "ft_dprintf.h"
 
 int	percentage_bonus(int fd, t_flags *flags)
 {

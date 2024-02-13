@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "ft_printf.h"
 
 static char	*unsigned_itoa_conversion(unsigned int num, char *str)
 {

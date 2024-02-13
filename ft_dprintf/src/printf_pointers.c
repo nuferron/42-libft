@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "ft_dprintf.h"
 
 static int	print_pointer_hexadecimal(int fd, unsigned long long n)
 {

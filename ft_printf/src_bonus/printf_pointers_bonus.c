@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "ft_printf.h"
 
 static int	hex_conversion_pointers(unsigned long long num)
 {

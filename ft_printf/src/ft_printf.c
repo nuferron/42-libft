@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "ft_printf.h"
 
-int	eval_printf_variable2(char c, va_list args)
+static int	eval_printf_variable2(char c, va_list args)
 {
 	if (c == '%')
 		return (write(1, "%", 1));

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "ft_dprintf.h"
 
 void	default_flags(t_flags *flags)
 {

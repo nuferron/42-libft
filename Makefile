@@ -37,28 +37,42 @@ OBJDIR = obj/
 SRCDIR = src/
 HEADER = libft.h
 NAME = libft.a
+LIBP = ft_printf/libft_printf.a
+LIBDP = ft_dprintf/libft_dprintf.a
 CFLAGS = -Wall -Wextra -Werror
 COLUMNS = $(shell tput cols)
 
 all: 		${NAME}
 
-${NAME}:	${OBJS} make_printf
+${NAME}:	${OBJS}
 		ar rcs ${NAME} ${OBJS}
-		make -s -C ft_dprintf bonus
-		cp ft_dprintf/libftprintf.a ${NAME}
-		make -s -C ft_printf bonus
-		cp ft_printf/libftprintf.a ${NAME}
 		printf "${WHITE}LIBFT: ${GREEN}Library compiled!${RESET}\n"
+		${MAKE} make_printf
 
 bonus:	do_bonus
 
+#make_printf:
+  #		if [ -e ${NAME} ]; then \
+	#		make -s -C ft_dprintf bonus ; \
+	#		make -s -C ft_printf bonus ; \
+	#		ar crsT liball.a ${NAME} ft_dprintf/libft_dprintf.a ; \
+	#	fi
+
 make_printf:
 		if [ -e ${NAME} ]; then \
-			make -s -C ft_dprintf bonus ; \
-			cp ft_dprintf/libftprintf.a ${NAME} ; \
-			make -s -C ft_printf bonus ; \
-			cp ft_printf/libftprintf.a ${NAME} ; \
+			if make -s -C ft_dprintf && make -s -C ft_printf ; then \
+				${MAKE} combine_libs; \
+			else echo "${RED}Error${RESET}"; \
+			fi; \
 		fi
+
+combine_libs: ${NAME} ${LIBP} ${LIBDP}
+		ar -x ${NAME}
+		ar -x ${LIBP}
+		ar -x ${LIBDP}
+		ar -crs libs.a *.o
+		rm -f *.o
+
 
 do_bonus:	${OBJS} ${OBJS_BNS}
 		ar rcs ${NAME} ${OBJS} ${OBJS_BNS}

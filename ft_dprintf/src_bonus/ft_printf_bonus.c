@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libftprintf.h"
+#include "ft_dprintf.h"
 
 int	is_specifier(char c)
 {
@@ -94,7 +94,7 @@ int	lets_print(int fd, va_list args, char const *format)
 	return (nbytes);
 }
 
-int	ft_printf(int fd, char const *format, ...)
+int	ft_dprintf(int fd, char const *format, ...)
 {
 	va_list	arg_ptr;
 	int		nbytes;
