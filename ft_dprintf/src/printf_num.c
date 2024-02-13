@@ -34,7 +34,7 @@ static int	print_num_digits(int fd, int num)
 	return (nbytes);
 }
 
-int	print_num(int fd, int num)
+int	dprint_num(int fd, int num)
 {
 	int	nbytes;
 	int	w_protection;

@@ -36,7 +36,7 @@ static int	print_pointer_hexadecimal(int fd, unsigned long long n)
 	return (nbytes);
 }
 
-int	print_pointer(int fd, unsigned long long num)
+int	dprint_pointer(int fd, unsigned long long num)
 {
 	int	len;
 	int	w_protection;

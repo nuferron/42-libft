@@ -35,7 +35,7 @@ static int	hex_conversion_cap(int fd, unsigned int dec_num)
 	return (nbytes);
 }
 
-int	print_hex_cap(int fd, unsigned int dec_num)
+int	dprint_hex_cap(int fd, unsigned int dec_num)
 {
 	if (dec_num == 0)
 		return (write(fd, "0", 1));

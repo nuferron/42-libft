@@ -12,7 +12,7 @@
 
 #include "ft_dprintf.h"
 
-int	print_string(int fd, char *str)
+int	dprint_string(int fd, char *str)
 {
 	int	nbytes;
 	int	w_protection;

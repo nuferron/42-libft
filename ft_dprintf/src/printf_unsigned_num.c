@@ -12,7 +12,7 @@
 
 #include "ft_dprintf.h"
 
-int	print_unsigned_num(int fd, unsigned int num)
+int	dprint_unsigned_num(int fd, unsigned int num)
 {
 	int	nbytes;
 	int	aux;

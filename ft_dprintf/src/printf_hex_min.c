@@ -35,7 +35,7 @@ static int	hex_conversion_min(int fd, unsigned int dec_num)
 	return (nbytes);
 }
 
-int	print_hex_min(int fd, unsigned int dec_num)
+int	dprint_hex_min(int fd, unsigned int dec_num)
 {
 	if (dec_num == 0)
 		return (write(fd, "0", 1));

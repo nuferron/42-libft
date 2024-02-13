@@ -12,7 +12,7 @@
 
 #include "ft_dprintf.h"
 
-int	is_specifier(char c)
+static int	is_specifier(char c)
 {
 	if (c == '%')
 		return (1);
@@ -33,7 +33,7 @@ int	is_specifier(char c)
 	return (0);
 }
 
-int	eval_flags(char *format, int i, t_flags *flags)
+static int	eval_flags(char *format, int i, t_flags *flags)
 {
 	default_flags(flags);
 	if (format[i - 1] == '%' && ((format[i] >= 'a' && format[i] <= 'z')
@@ -67,7 +67,7 @@ static int	format_specifier(int fd, char c, va_list args, t_flags *flags)
 	return (0);
 }
 
-int	lets_print(int fd, va_list args, char const *format)
+static int	lets_print(int fd, va_list args, char const *format)
 {
 	t_flags	flags;
 	int		i;
