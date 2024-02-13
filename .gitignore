@@ -2,3 +2,9 @@ obj/
 ./a.out
 libft.a
 libftprintf.a
+ft_printf/obj_bonus
+ft_printf/obj
+ft_printf/do_bonus
+ft_dprintf/obj_bonus
+ft_dprintf/obj
+ft_dprintf/do_bonus
