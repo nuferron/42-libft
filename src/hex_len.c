@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   len_functions.c                                    :+:      :+:    :+:   */
+/*   hex_len.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nuferron <nuferron@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/14 00:08:26 by nuferron          #+#    #+#             */
-/*   Updated: 2023/09/13 21:27:51 by nuferron         ###   ########.fr       */
+/*   Created: 2023/01/18 13:17:27 by nuferron          #+#    #+#             */
+/*   Updated: 2023/11/29 15:15:56 by nuferron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dprintf.h"
+#include "libft.h"
 
-int	pointer_len(unsigned long long num)
+int	hex_len(unsigned int num)
 {
 	int	counter;
 

@@ -29,13 +29,13 @@ typedef struct s_printf
 }	t_flags;
 
 int		ft_dprintf(int fd, char const *format, ...);
-int		dprint_char(int fd, int c);
-int		dprint_string(int fd, char *str);
-int		dprint_num(int fd, int n);
-int		dprint_pointer(int fd, unsigned long long num);
-int		dprint_unsigned_num(int fd, unsigned int num);
-int		dprint_hex_min(int fd, unsigned int dec_num);
-int		dprint_hex_cap(int fd, unsigned int dec_num);
+int		print_char(int fd, int c);
+int		print_string(int fd, char *str);
+int		print_num(int fd, int n);
+int		print_pointer(int fd, unsigned long long num);
+int		print_unsigned_num(int fd, unsigned int num);
+int		print_hex_min(int fd, unsigned int dec_num);
+int		print_hex_cap(int fd, unsigned int dec_num);
 
 /***********************  BONUS  ************************/
 
@@ -67,8 +67,6 @@ char	*add_ox(char *str, t_flags *flags);
 void	ox_to_front(char *str, t_flags *flags);
 
 /*LENGTH FUNCTIONS*/
-int		unsigned_len(unsigned int num);
 int		pointer_len(unsigned long long num);
-int		hex_len(unsigned int num);
 
 #endif
