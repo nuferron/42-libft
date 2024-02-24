@@ -1,4 +1,4 @@
-These functions receive an integer c and check if it belongs to a certain character class (i.e. isalpha checks if c is a letter). All these functions are included in the ctype.h header.
+These functions receive an integer c and check if it belongs to a certain character class (i.e. isalpha checks if c is a letter). All these functions are included in the [ctype.h](https://www.tutorialspoint.com/c_standard_library/ctype_h.htm) header.
 
 ### int isalpha(int c)
 As stated above, this function checks wether c is a letter or not, regardless wether it's uppercase or lowercase.
