@@ -32,8 +32,7 @@ static int	print_pointer_hexadecimal(int fd, unsigned long long n)
 	w_protection = write(fd, &hex_value, 1);
 	if (w_protection == -1)
 		return (-1);
-	nbytes += w_protection;
-	return (nbytes);
+	return (nbytes + w_protection);
 }
 
 int	print_pointer(int fd, unsigned long long num)
@@ -50,12 +49,10 @@ int	print_pointer(int fd, unsigned long long num)
 		w_protection = write(fd, "0", 1);
 		if (w_protection == -1)
 			return (-1);
-		len += w_protection;
-		return (len);
+		return (len + w_protection);
 	}
 	w_protection = print_pointer_hexadecimal(fd, num);
 	if (w_protection == -1)
 		return (-1);
-	len += w_protection;
-	return (len);
+	return (len + w_protection);
 }

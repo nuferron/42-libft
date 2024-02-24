@@ -30,8 +30,7 @@ static int	print_num_digits(int fd, int num)
 	}
 	if (write(fd, &aux, 1) == -1)
 		return (-1);
-	nbytes++;
-	return (nbytes);
+	return (++nbytes);
 }
 
 int	print_num(int fd, int num)
@@ -54,6 +53,5 @@ int	print_num(int fd, int num)
 	w_protection = print_num_digits(fd, num);
 	if (w_protection == -1)
 		return (-1);
-	nbytes += w_protection;
-	return (nbytes);
+	return (nbytes + w_protection);
 }
