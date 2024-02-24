@@ -13,7 +13,7 @@ The aim of this project is to understand what a library is and to learn how to c
 	</tr>
 	<tr>
 		<td><a href=".rdmes/ft_is.md">isdigit</a></td>
-		<td>strlen</td>
+		<td><a href=".rdmes/strlen.md">strlen</a></td>
 		<td>memmove</td>
 		<td>tolower</td>
 		<td>memchr</td>
@@ -21,7 +21,7 @@ The aim of this project is to understand what a library is and to learn how to c
 	</tr>
 	<tr>
 		<td><a href=".rdmes/ft_is.md">isalnum</a></td>
-		<td>memset</td>
+		<td><a href=".rdmes/memset.md">memset</a></td>
 		<td>strlcpy</td>
 		<td>strchr</td>
 		<td>memcmp</td>
