@@ -20,13 +20,10 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 	aux_src = (unsigned char *) src;
 	aux_dst = (unsigned char *) dst;
-	i = 0;
+	i = -1;
 	if (!dst && !src)
 		return (NULL);
-	while (i < n)
-	{
+	while (++i < n)
 		aux_dst[i] = aux_src[i];
-		i++;
-	}
 	return (dst);
 }
