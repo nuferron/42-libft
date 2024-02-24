@@ -35,8 +35,7 @@ int		print_string(int fd, char *str);
 int		print_num(int fd, int n);
 int		print_pointer(int fd, unsigned long long num);
 int		print_unsigned_num(int fd, unsigned int num);
-int		print_hex_min(int fd, unsigned int dec_num);
-int		print_hex_cap(int fd, unsigned int dec_num);
+int		print_hex(int fd, unsigned int dec_num, const char *base);
 
 /***********************  BONUS  ************************/
 

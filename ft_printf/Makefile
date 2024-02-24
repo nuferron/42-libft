@@ -20,8 +20,7 @@ WHITE = \033[1;37m
 RESET = \033[0m
 
 SRCS =	ft_printf.c printf_char.c printf_string.c printf_num.c \
-		printf_unsigned_num.c printf_pointers.c printf_hex_cap.c \
-		printf_hex_min.c
+		printf_unsigned_num.c printf_pointers.c printf_hex.c
 
 SRCS_BNS =	ft_printf_bonus.c printf_char_bonus.c printf_string_bonus.c \
 				printf_num_bonus.c 	printf_unsigned_num_bonus.c \
