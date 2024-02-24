@@ -29,7 +29,7 @@ The aim of this project is to understand what a library is and to learn how to c
 	</tr>
 	<tr>
 		<td><a href=".rdmes/ft_is.md">isascii</a></td>
-		<td>bzero</td>
+		<td><a href=".rdmes/memset.md">bzero</a></td>
 		<td>strlcat</td>
 		<td>strrchr</td>
 		<td>strnstr</td>
