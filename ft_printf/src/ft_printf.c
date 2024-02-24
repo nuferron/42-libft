@@ -27,9 +27,9 @@ int	format_distributor(int fd, char c, va_list args)
 	if (c == 'u')
 		return (print_unsigned_num(fd, va_arg(args, unsigned int)));
 	if (c == 'x')
-		return (print_hex_min(fd, va_arg(args, unsigned int)));
+		return (print_hex(fd, va_arg(args, unsigned int), "0123456789abcdef"));
 	if (c == 'X')
-		return (print_hex_cap(fd, va_arg(args, unsigned int)));
+		return (print_hex(fd, va_arg(args, unsigned int), "0123456789ABCDEF"));
 	return (0);
 }
 

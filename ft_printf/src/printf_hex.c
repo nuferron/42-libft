@@ -12,19 +12,18 @@
 
 #include "ft_printf.h"
 
-static int	hex_conversion_cap(int fd, unsigned int dec_num)
+static int	hex_conversion(int fd, unsigned int dec_num, const char *base)
 {
-	static char	*hex_base = "0123456789ABCDEF";
 	int			nbytes;
 	int			hex_value;
 	int			w_protection;
 
-	hex_value = hex_base[dec_num % 16];
+	hex_value = base[dec_num % 16];
 	nbytes = 0;
 	if (dec_num / 16 > 0)
 	{
 		dec_num = dec_num / 16;
-		w_protection = hex_conversion_cap(fd, dec_num);
+		w_protection = hex_conversion(fd, dec_num, base);
 		if (w_protection == -1)
 			return (-1);
 		nbytes += w_protection;
@@ -35,9 +34,9 @@ static int	hex_conversion_cap(int fd, unsigned int dec_num)
 	return (nbytes);
 }
 
-int	print_hex_cap(int fd, unsigned int dec_num)
+int	print_hex(int fd, unsigned int dec_num, const char *base)
 {
 	if (dec_num == 0)
 		return (write(fd, "0", 1));
-	return (hex_conversion_cap(fd, dec_num));
+	return (hex_conversion(fd, dec_num, base));
 }
