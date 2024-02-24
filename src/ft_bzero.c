@@ -20,8 +20,20 @@ void	ft_bzero(void *s, size_t n)
 	i = 0;
 	aux = s;
 	while (i < n)
-	{
-		aux[i] = '\0';
-		i++;
-	}
+		aux[i++] = '\0';
 }
+
+/*
+#include <strings.h>
+#include <string.h>
+int main()
+{
+	char str[] = "It's-a me, Mario!";
+	char str2[] = "hola que tal";
+
+	char *str3 = NULL;
+	//str3 = strdup("hola");
+	bzero(str, 300);
+	//ft_memset(str, 127, -1);
+	printf("bo |%s|\nft %s\n", str, str2);
+}*/

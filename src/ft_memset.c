@@ -20,9 +20,20 @@ void	*ft_memset(void *b, int c, size_t len)
 	i = 0;
 	aux = (unsigned char *) b;
 	while (i < len)
-	{
-		aux[i] = (unsigned char) c;
-		i++;
-	}
+		aux[i++] = (unsigned char) c;
 	return (b);
 }
+
+/*
+#include <string.h>
+int main()
+{
+	char str[] = "It's-a me, Mario!";
+	char str2[] = "hola que tal";
+
+	char *str3 = NULL;
+	str3 = strdup("hola");
+	memset(str3, 300, 30);
+	//ft_memset(str, 127, -1);
+	printf("bo |%s|\nft %s\n", str, str2);
+}*/
