@@ -5,7 +5,4 @@ ft_printf/obj_bonus
 ft_printf/obj
 ft_printf/do_bonus
 ft_printf/libft_printf.a
-ft_dprintf/obj_bonus
-ft_dprintf/obj
-ft_dprintf/do_bonus
-ft_dprintf/libft_dprintf.a
+main.c
