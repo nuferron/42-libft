@@ -1,43 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_hex_cap.c                                   :+:      :+:    :+:   */
+/*   printf_unsigned_num.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nuferron <nuferron@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/14 00:03:59 by nuferron          #+#    #+#             */
-/*   Updated: 2023/09/13 21:18:57 by nuferron         ###   ########.fr       */
+/*   Created: 2023/01/18 13:17:27 by nuferron          #+#    #+#             */
+/*   Updated: 2023/11/29 15:53:43 by nuferron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_dprintf.h"
 
-static int	hex_conversion_cap(unsigned int dec_num)
+int	print_unsigned_num(int fd, unsigned int num)
 {
-	static char	*hex_base = "0123456789ABCDEF";
-	int			nbytes;
-	int			hex_value;
-	int			w_protection;
+	int	nbytes;
+	int	aux;
+	int	w_protection;
 
-	hex_value = hex_base[dec_num % 16];
 	nbytes = 0;
-	if (dec_num / 16 > 0)
+	aux = num % 10 + '0';
+	if (num / 10 > 0)
 	{
-		dec_num = dec_num / 16;
-		w_protection = hex_conversion_cap(dec_num);
+		num = num / 10;
+		w_protection = print_unsigned_num(fd, num);
 		if (w_protection == -1)
 			return (-1);
 		nbytes += w_protection;
 	}
-	if (write(1, &hex_value, 1) == -1)
+	if (write(fd, &aux, 1) == -1)
 		return (-1);
 	nbytes++;
 	return (nbytes);
-}
-
-int	print_hex_cap(unsigned int dec_num)
-{
-	if (dec_num == 0)
-		return (write(1, "0", 1));
-	return (hex_conversion_cap(dec_num));
 }

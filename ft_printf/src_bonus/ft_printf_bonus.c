@@ -6,13 +6,13 @@
 /*   By: nuferron <nuferron@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 23:59:47 by nuferron          #+#    #+#             */
-/*   Updated: 2023/09/13 21:24:26 by nuferron         ###   ########.fr       */
+/*   Updated: 2023/11/29 15:21:33 by nuferron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_dprintf.h"
 
-int	is_specifier(char c)
+static int	is_specifier(char c)
 {
 	if (c == '%')
 		return (1);
@@ -33,7 +33,7 @@ int	is_specifier(char c)
 	return (0);
 }
 
-int	eval_flags(char *format, int i, t_flags *flags)
+static int	eval_flags(char *format, int i, t_flags *flags)
 {
 	default_flags(flags);
 	if (format[i - 1] == '%' && ((format[i] >= 'a' && format[i] <= 'z')
@@ -46,28 +46,28 @@ int	eval_flags(char *format, int i, t_flags *flags)
 	return (i);
 }
 
-int	eval_printf_variable(char c, va_list args, t_flags *flags)
+static int	format_specifier(int fd, char c, va_list args, t_flags *flags)
 {
 	if (c == '%')
-		return (percentage_bonus(flags));
+		return (percentage_bonus(fd, flags));
 	else if (c == 'c')
-		return (char_bonus(va_arg(args, int), flags));
+		return (char_bonus(fd, va_arg(args, int), flags));
 	else if (c == 's')
-		return (string_bonus(va_arg(args, char *), flags));
+		return (string_bonus(fd, va_arg(args, char *), flags));
 	else if (c == 'd' || c == 'i')
-		return (num_bonus(va_arg(args, int), flags));
+		return (num_bonus(fd, va_arg(args, int), flags));
 	else if (c == 'p')
-		return (pointer_bonus(va_arg(args, unsigned long long), flags));
+		return (pointer_bonus(fd, va_arg(args, unsigned long long), flags));
 	else if (c == 'u')
-		return (unsigned_bonus(va_arg(args, unsigned int), flags));
+		return (unsigned_bonus(fd, va_arg(args, unsigned int), flags));
 	else if (c == 'x')
-		return (hex_min_bonus(va_arg(args, unsigned int), flags));
+		return (hex_min_bonus(fd, va_arg(args, unsigned int), flags));
 	else if (c == 'X')
-		return (hex_cap_bonus(va_arg(args, unsigned int), flags));
+		return (hex_cap_bonus(fd, va_arg(args, unsigned int), flags));
 	return (0);
 }
 
-int	lets_print(va_list args, char const *format)
+static int	lets_print(int fd, va_list args, char const *format)
 {
 	t_flags	flags;
 	int		i;
@@ -82,15 +82,26 @@ int	lets_print(va_list args, char const *format)
 		{
 			i++;
 			i = eval_flags((char *)format, i, &flags);
-			aux = eval_printf_variable(format[i], args, &flags);
+			aux = format_specifier(fd, format[i], args, &flags);
 		}
 		else
-			aux = write(1, &format[i], 1);
+			aux = write(fd, &format[i], 1);
 		nbytes += aux;
 		if (aux == -1)
 			return (-1);
 		i++;
 	}
+	return (nbytes);
+}
+
+int	ft_dprintf(int fd, char const *format, ...)
+{
+	va_list	arg_ptr;
+	int		nbytes;
+
+	va_start(arg_ptr, format);
+	nbytes = lets_print(fd, arg_ptr, format);
+	va_end(arg_ptr);
 	return (nbytes);
 }
 
@@ -100,7 +111,7 @@ int	ft_printf(char const *format, ...)
 	int		nbytes;
 
 	va_start(arg_ptr, format);
-	nbytes = lets_print(arg_ptr, format);
+	nbytes = lets_print(1, arg_ptr, format);
 	va_end(arg_ptr);
 	return (nbytes);
 }

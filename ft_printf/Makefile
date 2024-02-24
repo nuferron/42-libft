@@ -37,7 +37,7 @@ OBJDIR = obj/
 OBJDIR_BNS = obj_bonus/
 SRCDIR = src/
 SRCDIR_BNS = src_bonus/
-NAME = libft_dprintf.a
+NAME = libft_printf.a
 HEADER = ft_dprintf.h
 LIBFT = ../libft.a
 CFLAGS = -Wall -Wextra -Werror
@@ -53,7 +53,7 @@ bonus:
 		if [ -e ${LIBFT} ] ; then \
 			${MAKE} do_bonus ; \
 		else \
-			echo "${RED}Error: Libft must be compiled before ft_dprintf${RESET}" ; \
+			echo "${RED}Error: Libft must be compiled before ft_printf${RESET}" ; \
 		fi
 
 do_bonus:	${OBJS_BNS}
@@ -64,7 +64,7 @@ do_bonus:	${OBJS_BNS}
 		touch do_bonus
 
 norm:
-	printf "${WHITE}FT_DPRINTF${RESET}"
+	printf "${WHITE}FT_PRINTF${RESET}"
 	(norminette ${SRCDIR} && echo " ${GREEN}Everything is correct")  | grep -v "OK" \
 	| awk '{if($$2 == "Error!") print "\n${RED}"$$1" "$$2; \
 	else print "${RESET}"$$0}'

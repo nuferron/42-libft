@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_unsigned_num.c                              :+:      :+:    :+:   */
+/*   printf_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nuferron <nuferron@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:17:27 by nuferron          #+#    #+#             */
-/*   Updated: 2023/09/13 21:18:03 by nuferron         ###   ########.fr       */
+/*   Updated: 2023/11/29 15:15:56 by nuferron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_dprintf.h"
 
-int	print_unsigned_num(unsigned int num)
+int	print_char(int fd, int c)
 {
-	int	nbytes;
-	int	aux;
-	int	w_protection;
-
-	nbytes = 0;
-	aux = num % 10 + '0';
-	if (num / 10 > 0)
-	{
-		num = num / 10;
-		w_protection = print_unsigned_num(num);
-		if (w_protection == -1)
-			return (-1);
-		nbytes += w_protection;
-	}
-	if (write(1, &aux, 1) == -1)
-		return (-1);
-	nbytes++;
-	return (nbytes);
+	return (write(fd, &c, 1));
 }

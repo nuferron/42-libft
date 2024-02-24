@@ -38,7 +38,6 @@ SRCDIR = src/
 HEADER = libft.h
 NAME = libft.a
 LIBP = ft_printf/libft_printf.a
-LIBDP = ft_dprintf/libft_dprintf.a
 CFLAGS = -Wall -Wextra -Werror
 COLUMNS = $(shell tput cols)
 
@@ -51,32 +50,19 @@ ${NAME}:	${OBJS}
 
 bonus:	do_bonus
 
-#make_printf:
-  #		if [ -e ${NAME} ]; then \
-	#		make -s -C ft_dprintf bonus ; \
-	#		make -s -C ft_printf bonus ; \
-	#		ar crsT liball.a ${NAME} ft_dprintf/libft_dprintf.a ; \
-	#	fi
-
 make_printf:
 		if [ -e ${NAME} ]; then \
-			if make -s -C ft_dprintf ; then \
+			if make -s -C ft_printf ; then \
 				${MAKE} combine_libs; \
 			else echo "${RED}Error${RESET}"; \
 			fi; \
 		fi
 
-#combine_libs: ${NAME} ${LIBP} ${LIBDP}
-#		ar -x ${NAME}
-#		ar -x ${LIBP}
-#		ar -x ${LIBDP}
-#		ar -crs libs.a *.o
-#		rm -f *.o
-
-combine_libs: ${NAME} ${LIBDP}
+combine_libs: ${NAME} ${LIBP}
 		ar -x ${NAME}
-		ar -x ${LIBDP}
-		ar -crs libs.a *.o
+		ar -x ${LIBP}
+		rm ${NAME}
+		ar -crs ${NAME} *.o
 		rm -f *.o
 
 do_bonus:	${OBJS} ${OBJS_BNS}
@@ -86,7 +72,6 @@ do_bonus:	${OBJS} ${OBJS_BNS}
 
 norm:
 	make -C ft_printf norm --no-print-directory
-	make -C ft_dprintf norm --no-print-directory
 	printf "${WHITE}LIBFT${RESET}"
 	(norminette ${SRCDIR} && echo " ${GREEN}Everything is correct")  | grep -v "OK" \
 	| awk '{if($$2 == "Error!") print "\n${RED}"$$1" "$$2; \
@@ -102,14 +87,14 @@ ${OBJDIR}:
 		mkdir -p ${OBJDIR}/bonus
 
 clean:
-		make -C ft_dprintf clean --no-print-directory
+		make -C ft_printf clean --no-print-directory
 		if [ -d ${OBJDIR} ] ; then \
 			rm -rf ${OBJDIR} ; \
 			printf "${WHITE}LIBFT: ${RED}Objects have been deleted${RESET}\n" ; \
 		fi
 
 fclean: 	clean
-		make -C ft_dprintf fclean --no-print-directory
+		make -C ft_printf fclean --no-print-directory
 		if [ -e ${NAME} ] || [ -e do_bonus ] ; then \
 			rm -rf ${NAME} do_bonus ; \
 			printf "${WHITE}LIBFT: ${RED}Static library has been deleted${RESET}\n" ; \
