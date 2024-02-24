@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dprintf.h"
+#include "ft_printf.h"
 
 void	char_add_padding(char *str, t_flags *flags)
 {

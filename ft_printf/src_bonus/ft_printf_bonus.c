@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dprintf.h"
+#include "ft_printf.h"
 
 static int	is_specifier(char c)
 {

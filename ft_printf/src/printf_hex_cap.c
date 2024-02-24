@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dprintf.h"
+#include "ft_printf.h"
 
 static int	hex_conversion_cap(int fd, unsigned int dec_num)
 {

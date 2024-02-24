@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dprintf.h"
+#include "ft_printf.h"
 
 void	left_padding_zero(char *str, char *final_str, t_flags *flags)
 {
