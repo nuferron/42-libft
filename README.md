@@ -4,15 +4,15 @@ The aim of this project is to understand what a library is and to learn how to c
 ### Replicated libc functions
 <table>
 	<tr>
-		<td>isalpha</td>
-		<td>isprint</td>
+		<td>[isalpha](.rdmes/ft_is.md)</td>
+		<td>[isprint](.rdmes/ft_is.md)</td>
 		<td>memcpy</td>
 		<td>toupper</td>
 		<td>strncmp</td>
 		<td>atoi</td>
 	</tr>
 	<tr>
-		<td>isdigit</td>
+		<td>[isdigit](.rdmes/ft_is.md)</td>
 		<td>strlen</td>
 		<td>memmove</td>
 		<td>tolower</td>
@@ -20,7 +20,7 @@ The aim of this project is to understand what a library is and to learn how to c
 		<td>memcmp</td>
 	</tr>
 	<tr>
-		<td>isalnum</td>
+		<td>[isalnum](.rdmes/ft_is.md)</td>
 		<td>memset</td>
 		<td>strlcpy</td>
 		<td>strchr</td>
@@ -28,7 +28,7 @@ The aim of this project is to understand what a library is and to learn how to c
 		<td>strdup</td>
 	</tr>
 	<tr>
-		<td>isascii</td>
+		<td>[isascii](.rdmes/ft_is.md)</td>
 		<td>bzero</td>
 		<td>strlcat</td>
 		<td>strrchr</td>
