@@ -39,10 +39,8 @@ int		print_hex(int fd, unsigned int dec_num, const char *base);
 
 /***********************  BONUS  ************************/
 
-int		is_specifier(char c);
-
 /*FLAGS PRE-PROCESSORS*/
-int		eval_flags(char *format, int i, t_flags *flags);
+int		is_specifier(char c);
 void	default_flags(t_flags *flags);
 int		capturing_flags(char *format, int i, t_flags *flags);
 int		capturing_flags_char(char *format, int i, t_flags *flags);
@@ -53,8 +51,7 @@ int		string_bonus(int fd, char *str, t_flags *flags);
 int		num_bonus(int fd, int num, t_flags *flags);
 int		pointer_bonus(int fd, unsigned long long num, t_flags *flags);
 int		unsigned_bonus(int fd, unsigned int num, t_flags *flags);
-int		hex_min_bonus(int fd, unsigned int dec_num, t_flags *flags);
-int		hex_cap_bonus(int fd, unsigned int dec_num, t_flags *flags);
+int		hex_bonus(int fd, unsigned int dec_num, t_flags *flags, const char *base);
 int		percentage_bonus(int fd, t_flags *flags);
 
 /*FLAG PROCESSORS*/

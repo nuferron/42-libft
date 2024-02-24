@@ -1,60 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_hex_min_bonus.c                             :+:      :+:    :+:   */
+/*   printf_hex_cap_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nuferron <nuferron@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/14 00:04:19 by nuferron          #+#    #+#             */
-/*   Updated: 2023/11/29 15:27:28 by nuferron         ###   ########.fr       */
+/*   Created: 2023/05/14 00:03:48 by nuferron          #+#    #+#             */
+/*   Updated: 2023/11/29 15:27:13 by nuferron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	hex_conversion_min_bonus(unsigned int num)
+static int	hex_conversion_bonus(unsigned int num, const char *base)
 {
-	static char	*hex_base_min = "0123456789abcdef";
+	//static char	*hex_base_cap = "0123456789ABCDEF";
 	int			hex_value;
 
-	hex_value = hex_base_min[num % 16];
+	hex_value = base[num % 16];
 	return (hex_value);
 }
 
-static char	*hex_to_str_min_bonus(unsigned int num, char *str)
+static char	*hex_to_str_bonus(unsigned int num, char *str, const char *base)
 {
 	int		len;
 
 	len = ft_strlen(str) + hex_len(num) - 1;
 	while (num / 16 > 0)
 	{
-		str[len] = (char)hex_conversion_min_bonus(num);
+		str[len] = (char)hex_conversion_bonus(num, base);
 		num = num / 16;
 		len--;
 	}
-	str[len] = (char)hex_conversion_min_bonus(num);
+	str[len] = (char)hex_conversion_bonus(num, base);
 	return (str);
 }
 
-char	*getting_hex_min(unsigned int num, t_flags *flags)
+char	*getting_hex(unsigned int num, t_flags *flags, const char *base)
 {
 	char	*str_precision;
-	int		len;
+	int		i;
 	int		prec_len;
 
 	if (flags->hex == '#')
-		flags->hex = 'x';
-	len = hex_len(num);
-	prec_len = precision_len('d', len, flags);
+		flags->hex = 'X';
+	i = hex_len(num);
+	prec_len = precision_len('d', i, flags);
 	str_precision = ft_calloc(prec_len + 1, sizeof(char));
 	if (!str_precision)
 		return (NULL);
-	precision_padding(str_precision, len, prec_len);
-	str_precision = hex_to_str_min_bonus(num, str_precision);
+	i = precision_padding(str_precision, i, prec_len);
+	str_precision = hex_to_str_bonus(num, str_precision, base);
 	return (str_precision);
 }
 
-static char	*hex_min_zero(unsigned int num, t_flags *flags)
+static char	*hex_aux(unsigned int num, t_flags *flags, const char *base)
 {
 	char	*str;
 	char	*ptr;
@@ -65,7 +65,7 @@ static char	*hex_min_zero(unsigned int num, t_flags *flags)
 	if (flags->precision == '.' && flags->prec_width == 0 && num == 0)
 		str = ft_strdup("");
 	else
-		str = getting_hex_min(num, flags);
+		str = getting_hex(num, flags, base);
 	if (!str)
 		return (NULL);
 	ptr = add_ox(str, flags);
@@ -81,13 +81,13 @@ static char	*hex_min_zero(unsigned int num, t_flags *flags)
 	return (final_str);
 }
 
-int	hex_min_bonus(int fd, unsigned int num, t_flags *flags)
+int	hex_bonus(int fd, unsigned int num, t_flags *flags, const char *base)
 {
 	char	*final_str;
 	char	*ptr;
 	int		nbytes;
 
-	ptr = hex_min_zero(num, flags);
+	ptr = hex_aux(num, flags, base);
 	if (!ptr)
 		return (-1);
 	final_str = add_padding(ptr, flags);

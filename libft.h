@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+#include "ft_printf/ft_printf.h"
 
 #define RED		"\033[1;31m"
 #define GREEN	"\033[1;32m"
@@ -46,9 +47,13 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
 
+/* LEN FUNCTIONS */
+size_t	ft_strlen(const char *str);
+int		unsigned_len(unsigned int num);
+int		hex_len(unsigned int num);
+
 /* STRING FUNCTIONS */
 
-size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strchr(const char *s, int c);

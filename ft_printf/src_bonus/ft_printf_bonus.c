@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int	is_specifier(char c)
+int	is_specifier(char c)
 {
 	if (c == '%')
 		return (1);
@@ -61,9 +61,9 @@ static int	format_specifier(int fd, char c, va_list args, t_flags *flags)
 	else if (c == 'u')
 		return (unsigned_bonus(fd, va_arg(args, unsigned int), flags));
 	else if (c == 'x')
-		return (hex_min_bonus(fd, va_arg(args, unsigned int), flags));
+		return (hex_bonus(fd, va_arg(args, unsigned int), flags, "0123456789abcdef"));
 	else if (c == 'X')
-		return (hex_cap_bonus(fd, va_arg(args, unsigned int), flags));
+		return (hex_bonus(fd, va_arg(args, unsigned int), flags, "0123456789ABCDEF"));
 	return (0);
 }
 

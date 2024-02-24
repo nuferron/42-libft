@@ -24,10 +24,9 @@ SRCS =	ft_printf.c printf_char.c printf_string.c printf_num.c \
 
 SRCS_BNS =	ft_printf_bonus.c printf_char_bonus.c printf_string_bonus.c \
 				printf_num_bonus.c 	printf_unsigned_num_bonus.c \
-				printf_pointers_bonus.c printf_hex_cap_bonus.c \
-				printf_hex_min_bonus.c printf_percentage.c pf_bonus_padding.c \
-				pf_bonus_flags.c pf_bonus_hexadecimal.c pf_bonus_precision.c \
-				pf_bonus_sign.c len_functions.c
+				printf_pointers_bonus.c printf_hex_bonus.c printf_percentage.c \
+				pf_bonus_padding.c pf_bonus_flags.c pf_bonus_hexadecimal.c \
+				pf_bonus_precision.c pf_bonus_sign.c len_functions.c
 
 OBJS = $(addprefix $(OBJDIR),$(SRCS:.c=.o))
 OBJS_BNS = $(addprefix $(OBJDIR_BNS),$(SRCS_BNS:.c=.o))
@@ -106,5 +105,5 @@ re:	fclean all
 
 re_bonus: fclean bonus
 
-.SILENT: ${NAME} ${OBJDIR} clean fclean ${OBJDIR_BNS} do_bonus make_libs norm
+.SILENT: ${NAME} ${OBJDIR} clean fclean ${OBJDIR_BNS} do_bonus make_libs norm bonus
 .PHONY: all clean fclean re re_bonus bonus

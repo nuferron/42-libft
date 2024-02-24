@@ -52,7 +52,7 @@ bonus:	do_bonus
 
 make_printf:
 		if [ -e ${NAME} ]; then \
-			if make -s -C ft_printf ; then \
+			if make -s -C ft_printf bonus; then \
 				${MAKE} combine_libs; \
 			else echo "${RED}Error${RESET}"; \
 			fi; \
@@ -103,5 +103,5 @@ fclean: 	clean
 
 re:		fclean all
 
-.SILENT: fclean clean ${NAME} do_bonus ${OBJDIR} norm make_printf
+.SILENT: fclean clean ${NAME} do_bonus ${OBJDIR} norm make_printf combine_libs
 .PHONY: all clean fclean re bonus make_printf
