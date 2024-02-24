@@ -4,32 +4,32 @@ The aim of this project is to understand what a library is and to learn how to c
 ### Replicated libc functions
 <table>
 	<tr>
-		<td>isalpha</td>
-		<td>isprint</td>
+		<td><a href=".rdmes/ft_is.md">isalpha</a></td>
+		<td><a href=".rdmes/ft_is.md">isprint</a></td>
 		<td>memcpy</td>
 		<td>toupper</td>
 		<td>strncmp</td>
 		<td>atoi</td>
 	</tr>
 	<tr>
-		<td>isdigit</td>
-		<td>strlen</td>
+		<td><a href=".rdmes/ft_is.md">isdigit</a></td>
+		<td><a href=".rdmes/strlen.md">strlen</a></td>
 		<td>memmove</td>
 		<td>tolower</td>
 		<td>memchr</td>
 		<td>memcmp</td>
 	</tr>
 	<tr>
-		<td>isalnum</td>
-		<td>memset</td>
+		<td><a href=".rdmes/ft_is.md">isalnum</a></td>
+		<td><a href=".rdmes/memset.md">memset</a></td>
 		<td>strlcpy</td>
 		<td>strchr</td>
 		<td>memcmp</td>
 		<td>strdup</td>
 	</tr>
 	<tr>
-		<td>isascii</td>
-		<td>bzero</td>
+		<td><a href=".rdmes/ft_is.md">isascii</a></td>
+		<td><a href=".rdmes/memset.md">bzero</a></td>
 		<td>strlcat</td>
 		<td>strrchr</td>
 		<td>strnstr</td>
