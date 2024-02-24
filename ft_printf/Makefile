@@ -45,8 +45,13 @@ COLUMNS = $(shell tput cols)
 all:		${NAME}
 
 ${NAME}:	${OBJS}
-		ar rcs ${NAME} ${OBJS}
-		printf "${WHITE}FT_PRINTF: ${GREEN}Library compiled!${RESET}\n"
+		if [ -e ${LIBFT} ] ; then \
+			cp ../libft.a ${NAME} ; \
+			ar rcs ${NAME} ${OBJS} ; \
+			echo "${WHITE}FT_PRINTF: ${GREEN}Library compiled!${RESET}" ; \
+		else \
+			echo "${RED}Error: ${YELLOW}Libft must be compiled before ft_printf${RESET}" ; \
+		fi
 
 bonus:
 		if [ -e ${LIBFT} ] ; then \
@@ -59,13 +64,13 @@ do_bonus:	${OBJS_BNS}
 		rm -rf obj/ ${NAME}
 		cp ../libft.a ${NAME}
 		ar rcs ${NAME} ${OBJS_BNS}
-		printf "${WHITE}FT_PRINTF: ${GREEN}Bonus compiled!${RESET}\n"
+		echo "${WHITE}FT_PRINTF: ${GREEN}Bonus compiled!${RESET}"
 		touch do_bonus
 
 norm:
-	printf "${WHITE}FT_PRINTF${RESET}"
-	(norminette ${SRCDIR} && echo " ${GREEN}Everything is correct")  | grep -v "OK" \
-	| awk '{if($$2 == "Error!") print "\n${RED}"$$1" "$$2; \
+	echo -n "${WHITE}FT_PRINTF${RESET}"
+	(norminette ${SRCDIR} && echo -n " ${GREEN}Everything is correct")  | grep -v "OK" \
+	| awk '{if($$2 == "Error!") echo -e "\n${RED}"$$1" "$$2; \
 	else print "${RESET}"$$0}'
 
 ${OBJDIR}%.o:	${SRCDIR}%.c ${HEADER} | ${OBJDIR}
@@ -87,14 +92,14 @@ ${OBJDIR_BNS}:
 clean:
 	if [ -d ${OBJDIR} ] || [ -d ${OBJDIR_BNS} ]; then \
 		rm -rf ${OBJDIR} ${OBJDIR_BNS} ; \
-		printf "${WHITE}FT_PRINTF: ${RED}Objects have been deleted${RESET}\n" ; \
+		echo "${WHITE}FT_PRINTF: ${RED}Objects have been deleted${RESET}" ; \
 	fi
 
 fclean: 	clean
 		if [ -e ${NAME} ] || [ -e do_bonus ] ; then \
 			rm -rf ${NAME} do_bonus ; \
-			printf "${WHITE}FT_PRINTF: ${RED}Static library has been deleted${RESET}\n" ; \
-		else printf "${WHITE}FT_PRINTF: ${PURPLE}Already cleaned${RESET}\n" ; \
+			echo "${WHITE}FT_PRINTF: ${RED}Static library has been deleted${RESET}" ; \
+		else echo "${WHITE}FT_PRINTF: ${PURPLE}Already cleaned${RESET}" ; \
 		fi
 
 re:	fclean all
