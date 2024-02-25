@@ -21,7 +21,7 @@ The aim of this project is to understand what a library is and to learn how to c
 	</tr>
 	<tr>
 		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/char_classification.md">isalnum</a></td>
-		<td><a href=".rdmes/memset.md">memset</a></td>
+		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/memset.md">memset</a></td>
 		<td>strlcpy</td>
 		<td>strchr</td>
 		<td>memcmp</td>
