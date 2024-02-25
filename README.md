@@ -4,15 +4,15 @@ The aim of this project is to understand what a library is and to learn how to c
 ### Replicated libc functions
 <table>
 	<tr>
-		<td><a href=".rdmes/ft_is.md">isalpha</a></td>
-		<td><a href=".rdmes/ft_is.md">isprint</a></td>
+		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/char_classification.md">isalpha</a></td>
+		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/char_classification.md">isprint</a></td>
 		<td>memcpy</td>
 		<td>toupper</td>
 		<td>strncmp</td>
 		<td>atoi</td>
 	</tr>
 	<tr>
-		<td><a href=".rdmes/ft_is.md">isdigit</a></td>
+		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/char_classification.md">isdigit</a></td>
 		<td><a href=".rdmes/strlen.md">strlen</a></td>
 		<td>memmove</td>
 		<td>tolower</td>
@@ -20,7 +20,7 @@ The aim of this project is to understand what a library is and to learn how to c
 		<td>memcmp</td>
 	</tr>
 	<tr>
-		<td><a href=".rdmes/ft_is.md">isalnum</a></td>
+		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/char_classification.md">isalnum</a></td>
 		<td><a href=".rdmes/memset.md">memset</a></td>
 		<td>strlcpy</td>
 		<td>strchr</td>
@@ -28,7 +28,7 @@ The aim of this project is to understand what a library is and to learn how to c
 		<td>strdup</td>
 	</tr>
 	<tr>
-		<td><a href=".rdmes/ft_is.md">isascii</a></td>
+		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/char_classification.md">isascii</a></td>
 		<td><a href=".rdmes/memset.md">bzero</a></td>
 		<td>strlcat</td>
 		<td>strrchr</td>
