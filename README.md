@@ -13,7 +13,7 @@ The aim of this project is to understand what a library is and to learn how to c
 	</tr>
 	<tr>
 		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/char_classification.md">isdigit</a></td>
-		<td><a href=".rdmes/strlen.md">strlen</a></td>
+		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/strlen.md">strlen</a></td>
 		<td>memmove</td>
 		<td>tolower</td>
 		<td>memchr</td>
