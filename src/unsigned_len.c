@@ -16,8 +16,10 @@ int	unsigned_len(unsigned int num)
 {
 	int	counter;
 
-	counter = 1;
-	while (num / 10 != 0)
+	counter = 0;
+	if (!num)
+		return (1);
+	while (num)
 	{
 		num = num / 10;
 		counter++;
