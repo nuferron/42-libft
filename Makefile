@@ -6,7 +6,7 @@
 #    By: nuferron <nuferron@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 18:05:14 by nuferron          #+#    #+#              #
-#    Updated: 2024/01/09 21:32:58 by nuferron         ###   ########.fr        #
+#    Updated: 2024/03/11 14:33:38 by nuferron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,16 +46,15 @@ all: 		${NAME}
 ${NAME}:	${OBJS}
 		ar rcs ${NAME} ${OBJS}
 		printf "${WHITE}LIBFT: ${GREEN}Library compiled!${RESET}\n"
-		${MAKE} make_printf
+		${MAKE} -s make_printf
 
 bonus:	do_bonus
 
 make_printf:
 		if [ -e ${NAME} ]; then \
-			if make -s -C ft_printf bonus; then \
-				${MAKE} combine_libs; \
-			else echo "${RED}Error${RESET}"; \
-			fi; \
+			make -C ft_printf bonus --no-print-directory ; \
+			${MAKE} combine_libs; \
+		else echo "${RED}Error${RESET}"; \
 		fi
 
 combine_libs: ${NAME} ${LIBP}

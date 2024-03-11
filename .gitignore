@@ -6,3 +6,5 @@ ft_printf/obj
 ft_printf/do_bonus
 ft_printf/libft_printf.a
 main.c
+.*.swp
+__.SYMDEF\ SORTED
