@@ -4,33 +4,33 @@ The aim of this project is to understand what a library is and to learn how to c
 ### Replicated libc functions
 <table>
 	<tr>
-		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/char_classification.md">isalpha</a></td>
-		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/char_classification.md">isprint</a></td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Character-classification">isalpha</a></td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Character-classification">isprint</a></td>
 		<td>memcpy</td>
 		<td>toupper</td>
 		<td>strncmp</td>
 		<td>atoi</td>
 	</tr>
 	<tr>
-		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/char_classification.md">isdigit</a></td>
-		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/strlen.md">strlen</a></td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Character-classification">isdigit</a></td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Measuring-length">strlen</a></td>
 		<td>memmove</td>
 		<td>tolower</td>
 		<td>memchr</td>
 		<td>memcmp</td>
 	</tr>
 	<tr>
-		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/char_classification.md">isalnum</a></td>
-		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/memset.md">memset</a></td>
-		<td>strlcpy</td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Character-classification">isalnum</a></td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Filling-memory-with-a-constant-byte">memset</a></td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Size%E2%80%90bounded-string-copying-and-concatenation">strlcpy</td>
 		<td>strchr</td>
 		<td>memcmp</td>
 		<td>strdup</td>
 	</tr>
 	<tr>
-		<td><a href="https://github.com/nuferron/42-projects/blob/main/libft/char_classification.md">isascii</a></td>
-		<td><a href=".rdmes/memset.md">bzero</a></td>
-		<td>strlcat</td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Character-classification">isascii</a></td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Filling-memory-with-a-constant-byte">bzero</a></td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Size%E2%80%90bounded-string-copying-and-concatenation">strlcat</td>
 		<td>strrchr</td>
 		<td>strnstr</td>
 		<td></td>
