@@ -12,71 +12,39 @@
 
 #include "libft.h"
 
-static int	ft_intlen(int num)
+static char	*ft_conversion(char *str, int n, int sign, int nlen)
 {
-	int	counter;
-
-	counter = 1;
-	while (num / 10 != 0)
+	str[nlen] = '\0';
+	while (nlen > 0)
 	{
-		num = num / 10;
-		counter++;
+		str[--nlen] = n % 10 + '0';
+		n = n / 10;
 	}
-	return (counter);
-}
-
-static char	*ft_conversion(int num, int sign, char *str)
-{
-	int	i;
-
-	if (sign != -1)
-		i = ft_intlen(num);
-	else
-		i = ft_intlen(num) + 1;
-	if (num > 9)
-		ft_conversion(num / 10, sign, str);
-	num = num % 10 + '0';
-	str[i - 1] = num;
-	return (str);
-}
-
-static char	*ft_malloc_protection(int n)
-{
-	char	*str;
-
-	if (n > 0)
-		str = (char *)malloc(sizeof(char) * (ft_intlen(n) + 1));
-	else
-		str = (char *)malloc(sizeof(char) * (ft_intlen(n) + 2));
-	if (!str)
-		return (NULL);
+	if (sign)
+		str[0] = '-';
 	return (str);
 }
 
 char	*ft_itoa(int n)
 {
+	int	nlen;
+	int	sign;
 	char	*str;
-	int		sign;
-	int		nlen;
 
-	sign = 1;
-	nlen = ft_intlen(n);
+	sign = 0;
+	nlen = 0;
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
 	if (n == 0)
 		return (ft_strdup("0"));
-	str = ft_malloc_protection(n);
-	if (!str)
-		return (NULL);
 	if (n < 0)
 	{
-		str[0] = '-';
-		n = -n;
 		sign = -1;
-		str[nlen + 1] = '\0';
+		n = -n;
+		nlen++;
 	}
-	else
-		str[nlen] = '\0';
-	ft_conversion(n, sign, str);
-	return (str);
+	str = (char *)malloc(sizeof(char) * (nlen + 1));
+	if (!str)
+		return (NULL);
+	return (ft_conversion(str, n, sign, int_len(n) + nlen));
 }
