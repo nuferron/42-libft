@@ -51,6 +51,7 @@ void	*ft_memset(void *b, int c, size_t len);
 size_t	ft_strlen(const char *str);
 int		unsigned_len(unsigned int num);
 int		hex_len(unsigned int num);
+int		int_len(int num);
 
 /* STRING FUNCTIONS */
 
