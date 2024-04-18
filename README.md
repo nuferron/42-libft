@@ -9,7 +9,7 @@ The aim of this project is to understand what a library is and to learn how to c
 		<td>memcpy</td>
 		<td><a href="https://github.com/nuferron/42-libft/wiki/Changing-letters'-case">toupper</td>
 		<td>strncmp</td>
-		<td>atoi</td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/String-to-integer-and-viceversa">atoi</td>
 	</tr>
 	<tr>
 		<td><a href="https://github.com/nuferron/42-libft/wiki/Character-classification">isdigit</a></td>
@@ -47,7 +47,7 @@ The aim of this project is to understand what a library is and to learn how to c
 	</tr>
 	<tr>
 		<td>strjoin</td>
-		<td>itoa</td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/String-to-integer-and-viceversa">itoa</td>
 		<td><a href="https://github.com/nuferron/42-libft/wiki/Writing-in-specific-file-descriptors">putchar_fd</td>
 		<td><a href="https://github.com/nuferron/42-libft/wiki/Writing-in-specific-file-descriptors">putnbr_fd</td>
 	</tr>
