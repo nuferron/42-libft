@@ -25,7 +25,8 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	   ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c \
 	   ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c \
 	   ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
-	   ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c hex_len.c unsigned_len.c
+	   ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c hex_len.c unsigned_len.c \
+	   int_len.c
 
 SRCS_BNS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 			ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
@@ -51,18 +52,18 @@ ${NAME}:	${OBJS}
 bonus:	do_bonus
 
 make_printf:
-		if [ -e ${NAME} ]; then \
-			make -C ft_printf bonus --no-print-directory ; \
-			${MAKE} combine_libs; \
-		else echo "${RED}Error${RESET}"; \
-		fi
+		rm -f ft_printf/do_bonus
+		make -C ft_printf bonus --no-print-directory
+		${MAKE} combine_libs
+
 
 combine_libs: ${NAME} ${LIBP}
-		ar -x ${NAME}
-		ar -x ${LIBP}
 		rm ${NAME}
-		ar -crs ${NAME} *.o
-		rm -f *.o
+		mkdir -p tmp
+		cp -r obj/*.o tmp/.
+		cp -r ft_printf/obj_bonus/*.o tmp/.
+		ar -crs ${NAME} tmp/*.o
+		rm -rf tmp
 
 do_bonus:	${OBJS} ${OBJS_BNS}
 		ar rcs ${NAME} ${OBJS} ${OBJS_BNS}
@@ -76,14 +77,12 @@ norm:
 	| awk '{if($$2 == "Error!") print "\n${RED}"$$1" "$$2; \
 	else print "${RESET}"$$0}'
 
-$(OBJDIR)%.o:	${SRCDIR}%.c $(HEADER) | ${OBJDIR}
+$(OBJDIR)%.o:	${SRCDIR}%.c $(HEADER) Makefile
+		@mkdir -p $(dir $@)
+		@mkdir -p ${OBJDIR}/bonus
 		@printf "${WHITE}LIBFT:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
 		@cc $(CFLAGS) -I . -c $< -o $@
 		@printf "\r%-${COLUMNS}s\r" ""
-
-${OBJDIR}:
-		mkdir -p $(dir $@)
-		mkdir -p ${OBJDIR}/bonus
 
 clean:
 		make -C ft_printf clean --no-print-directory
@@ -102,5 +101,5 @@ fclean: 	clean
 
 re:		fclean all
 
-.SILENT: fclean clean ${NAME} do_bonus ${OBJDIR} norm make_printf combine_libs
+.SILENT: fclean clean do_bonus norm make_printf combine_libs ${NAME}
 .PHONY: all clean fclean re bonus make_printf
