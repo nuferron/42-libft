@@ -72,21 +72,17 @@ norm:
 	| awk '{if($$2 == "Error!") echo -e "\n${RED}"$$1" "$$2; \
 	else print "${RESET}"$$0}'
 
-${OBJDIR}%.o:	${SRCDIR}%.c ${HEADER} | ${OBJDIR}
+${OBJDIR}%.o:	${SRCDIR}%.c ${HEADER}
+		@mkdir -p ${OBJDIR}}
 		@printf "${WHITE}FT_PRINTF:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
 		@cc $(CFLAGS) -I . -c $< -o $@
 		@printf "\r%-${COLUMNS}s\r" ""
 
-${OBJDIR}:
-		mkdir -p $(dir $@)
-
-${OBJDIR_BNS}%.o:	${SRCDIR_BNS}%.c ${HEADER} | ${OBJDIR_BNS}
+${OBJDIR_BNS}%.o:	${SRCDIR_BNS}%.c ${HEADER}
+		@mkdir -p ${OBJDIR_BNS}
 		@printf "${WHITE}FT_PRINTF:${CYAN}Compiling files: ${WHITE}$(notdir $<)...${RESET}\r"
 		@cc $(CFLAGS) -I . -c $< -o $@
 		@printf "\r%-${COLUMNS}s\r" ""
-
-${OBJDIR_BNS}:
-		mkdir -p $(dir $@)
 
 clean:
 	if [ -d ${OBJDIR} ] || [ -d ${OBJDIR_BNS} ]; then \
