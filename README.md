@@ -7,7 +7,7 @@ The aim of this project is to understand what a library is and to learn how to c
 		<td><a href="https://github.com/nuferron/42-libft/wiki/Character-classification">isalpha</a></td>
 		<td><a href="https://github.com/nuferron/42-libft/wiki/Character-classification">isprint</a></td>
 		<td>memcpy</td>
-		<td>toupper</td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Changing-letters'-case">toupper</td>
 		<td>strncmp</td>
 		<td>atoi</td>
 	</tr>
@@ -15,7 +15,7 @@ The aim of this project is to understand what a library is and to learn how to c
 		<td><a href="https://github.com/nuferron/42-libft/wiki/Character-classification">isdigit</a></td>
 		<td><a href="https://github.com/nuferron/42-libft/wiki/Measuring-length">strlen</a></td>
 		<td>memmove</td>
-		<td>tolower</td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Changing-letters'-case">tolower</td>
 		<td>memchr</td>
 		<td>memcmp</td>
 	</tr>
@@ -43,18 +43,18 @@ The aim of this project is to understand what a library is and to learn how to c
 		<td>substr</td>
 		<td>split</td>
 		<td>striteri</td>
-		<td>putendl_fd</td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Writing-in-specific-file-descriptors">putendl_fd</td>
 	</tr>
 	<tr>
 		<td>strjoin</td>
 		<td>itoa</td>
-		<td>putchar_fd</td>
-		<td>putnbr_fd</td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Writing-in-specific-file-descriptors">putchar_fd</td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Writing-in-specific-file-descriptors">putnbr_fd</td>
 	</tr>
 	<tr>
 		<td>strtrim</td>
 		<td>strmapi</td>
-		<td>putstr_fd</td>
+		<td><a href="https://github.com/nuferron/42-libft/wiki/Writing-in-specific-file-descriptors">putstr_fd</td>
 		<td></td>
 	</tr>
 </table>
